@@ -1,24 +1,13 @@
-import logo from './logo.svg';
 import './App.css';
+import Board from './components/gameBoard/game-board';
+import Layout from './components/actionButtons/action-layout';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <main className="App flex flex-col bg-slate-300 h-screen justify-center p-3">
+      <Layout></Layout>
+      <Board></Board>
+    </main>
   );
 }
 
