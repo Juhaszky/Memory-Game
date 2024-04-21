@@ -7,16 +7,16 @@ const Board = () => {
     useEffect(() => {
         switch (+level) {
             case 0:
-                setCardAmount(4);
-                break;
-            case 1:
-                setCardAmount(6);
-                break;
-            case 2:
                 setCardAmount(8);
                 break;
+            case 1:
+                setCardAmount(12);
+                break;
+            case 2:
+                setCardAmount(14);
+                break;
             default:
-                setCardAmount(4);
+                setCardAmount(16);
         }
     }, [level]);
 
@@ -25,7 +25,7 @@ const Board = () => {
     return (
         <div className="game-board flex flex-wrap gap-3 justify-center">
             {Array.from({ length: cardAmount }).map((card, idx) =>
-                (<Card key={idx} />))}
+                (<Card key={idx} cardNumber={idx}/>))}
         </div>
     );
 }
