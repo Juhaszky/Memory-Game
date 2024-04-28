@@ -3,8 +3,11 @@ import { createSlice } from "@reduxjs/toolkit";
 export const gameSlice = createSlice({
     name: "game",
     initialState: {
-        gameStatus: "playing" | "stopped",
-        flippedCards: []
+        gameStatus: "stopped",
+        cards: 8,
+        flippedCards: [],
+        revealedCards: [],
+        images: []
     },
     reducers: {
         flipCard: (state, action) => {
@@ -20,9 +23,31 @@ export const gameSlice = createSlice({
         },
         resetFlips: (state) => {
             state.flippedCards = [];
+        },
+        startGame: (state) => {
+            state.gameStatus = "playing"
+        },
+        stopGame: (state) => {
+            state.gameStatus = "stopped";
+            state.revealedCards = [];
+            state.images = [];
+        },
+        setImage: (state, action) => {
+            const newImage = action.payload;
+            state.images = [...state.images, newImage];
+        },
+        setCard: (state, action) => {
+            state.cards = action.payload;
+        },
+        setCardDefault: (state) => {
+            state.cards = 8;
+        },
+        setRevealCard: (state, action) => {
+            const newCards = action.payload;
+            state.revealedCards = [...state.revealedCards, ...newCards];
         }
     }
 });
-export const { flipCard, resetFlips } = gameSlice.actions
+export const { flipCard, resetFlips, startGame, stopGame, setImage, setCard, setRevealCard } = gameSlice.actions
 
 export default gameSlice.reducer
